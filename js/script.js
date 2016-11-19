@@ -12,6 +12,10 @@ app.events = function () {
         var inputValue = document.querySelector(".input");
         let artistNames = inputValue.value.split(',').map(c => c.replace(/(^(\s)*)|((\s)*$)/g, ''));
         if (artistNames[0].length > 0) {
+            if (artistNames.length < 2) {
+                artistNames.push(artistNames[0]);
+                console.log(artistNames);
+            }
             let search = artistNames.map(c => app.searchArtist(c));
             app.getArtistInfo(search);
 
@@ -59,7 +63,6 @@ app.getArtistInfo = function (search) {
         result = results
             .map((itm) => itm[0].artists.items[0].id)
             .map(id => app.getAlbums(id));
-
         app.getTracks(result);
     });
 
