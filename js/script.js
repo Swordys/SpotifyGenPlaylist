@@ -14,7 +14,6 @@ app.events = function () {
         if (artistNames[0].length > 0) {
             if (artistNames.length < 2) {
                 artistNames.push(artistNames[0]);
-                console.log(artistNames);
             }
             let search = artistNames.map(c => app.searchArtist(c));
             app.getArtistInfo(search);
